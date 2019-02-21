@@ -29,3 +29,7 @@ cover_db/
 MYMETA.*
 
 /Log-Mini-*
+
+Log-Mini.iml
+Log-Mini.ipr
+Log-Mini.iws
