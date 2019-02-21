@@ -57,6 +57,17 @@
       }
    },
    "release_status" : "unstable",
+   "resources" : {
+      "bugtracker" : {
+         "web" : "https://github.com/alpha6/Log-Mini/issues"
+      },
+      "homepage" : "https://github.com/alpha6/Log-Mini",
+      "repository" : {
+         "type" : "git",
+         "url" : "git://github.com/alpha6/Log-Mini.git",
+         "web" : "https://github.com/alpha6/Log-Mini"
+      }
+   },
    "version" : "0.0.1",
    "x_serialization_backend" : "JSON::PP version 2.93",
    "x_static_install" : 1
