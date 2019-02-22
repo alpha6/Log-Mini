@@ -38,9 +38,11 @@ Log::Mini - It's a very simple logger which can log your messages to a file or S
 
     use Log::Mini;
 
-    my $logger = Log::Mini->get_logger(); #STDERR logger used by default
-    $logger->warn('Very important message');
+    my $logger = Log::Mini->get_logger(); #STDERR logger used by default. Error is default log level
+    $logger->error('Error message');
 
+    my $debug_logger = Log::Mini->get_logger('stderr', level => 'debug'); #STDERR logger used by default
+    $debug_logger->error('Error message');
 
     my $file_logger = Log::Mini->get_logger(file => 'log_file.log');
     $file_logger->info('message to log file');
