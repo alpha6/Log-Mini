@@ -3,7 +3,7 @@ package Log::Mini;
 use strict;
 use warnings;
 
-our $VERSION = "0.0.1";
+our $VERSION = "0.0.2";
 
 use Log::Mini::LoggerFILE;
 use Log::Mini::LoggerSTDERR;
@@ -11,6 +11,8 @@ use Log::Mini::LoggerSTDERR;
 sub new {
     my $class = shift;
     my ( $type, @args ) = @_;
+
+    $type = 'stderr' unless defined $type;
 
     if ( $type eq 'file' ) {
         return Log::Mini::LoggerFILE->new(@args);
