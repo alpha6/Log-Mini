@@ -24,7 +24,6 @@ Log::Mini - It's a very simple logger which can log your messages to a file or S
     #log method for better compatibility
     $logger->log('info', 'information message');
 
-
 # DESCRIPTION
 
 Log::Mini is a very simple logger which can log your messages to a file or STDERR.
