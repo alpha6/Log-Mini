@@ -3,7 +3,7 @@ package Log::Mini;
 use strict;
 use warnings;
 
-our $VERSION = "0.0.3";
+our $VERSION = "0.1.0";
 
 use Log::Mini::LoggerFILE;
 use Log::Mini::LoggerSTDERR;
