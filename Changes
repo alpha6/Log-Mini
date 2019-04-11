@@ -1,6 +1,8 @@
 Revision history for Perl extension Log-Mini
 
 {{$NEXT}}
+
+0.2.0 2019-04-11T22:06:58Z
     - Null logger
 
 0.1.1 2019-03-19T20:44:04Z
