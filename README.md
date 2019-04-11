@@ -16,17 +16,17 @@ Log::Mini - It's a very simple logger which can log your messages to a file or S
     $file_logger->info('message to log file');
 
     #prevent buffered output. May slow down your application!
-    my $synced_file_logger = Log::Mini->new(file => 'log_file.log', synced => 1);
+    my $synced_file_logger = Log::Mini->get_logger(file => 'log_file.log', synced => 1);
 
     #format message with sprintf
     $logger->info('Message with %s %s', 'some', 'additional info');
 
     #log method for better compatibility
     $logger->log('info', 'information message');
-    
+
     #Null logger - drops all messages to /dev/null
-    my $logger = Log::Mini->new('null); 
-    $logger->error('Error message'); #Message will be dropped 
+    my $logger = Log::Mini->new('null);
+    $logger->error('Error message'); #Message will be dropped
 
 # DESCRIPTION
 

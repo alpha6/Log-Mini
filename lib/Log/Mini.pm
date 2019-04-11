@@ -20,7 +20,7 @@ sub new {
     }
     elsif ( $type eq 'null' ) {
         require Log::Mini::LoggerNULL;
-        return Log::Mini::LoggerNULL->new(@_);
+        return Log::Mini::LoggerNULL->new(@args);
     }
     else {
         require Log::Mini::LoggerSTDERR;
