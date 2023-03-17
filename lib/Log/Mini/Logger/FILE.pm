@@ -1,13 +1,13 @@
-package Log::Mini::LoggerFILE;
+package Log::Mini::Logger::FILE;
 
 use strict;
 use warnings;
 use IO::Handle;
 
+use base 'Log::Mini::Logger::Base';
 
-use base 'Log::Mini::LoggerBase';
-
-sub new {
+sub new
+{
     my $self = shift->SUPER::new(@_);
     my (%params) = @_;
 
@@ -24,16 +24,18 @@ sub new {
     return $self;
 }
 
-sub _print {
+sub _print
+{
     my $self = shift;
 
     my $fh = $self->{fh};
     print $fh @_;
 }
 
-
-sub DESTROY {
+sub DESTROY
+{
     close shift->{'fh'};
     return;
 }
+
 1;

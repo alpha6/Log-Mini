@@ -5,11 +5,11 @@ use warnings;
 use Test::More;
 use Test::Fatal;
 use File::Temp;
-use Log::Mini::LoggerFILE;
+use Log::Mini::Logger::FILE;
 
 
 subtest 'creates correct object' => sub {
-    isa_ok(Log::Mini::LoggerFILE->new, 'Log::Mini::LoggerFILE');
+    isa_ok(Log::Mini::Logger::FILE->new, 'Log::Mini::Logger::FILE');
 };
 
 subtest 'prints to file' => sub {
@@ -79,7 +79,7 @@ sub _slurp {
 }
 
 sub _build_logger {
-    my $logger = Log::Mini::LoggerFILE->new(@_);
+    my $logger = Log::Mini::Logger::FILE->new(@_);
     $logger->set_level('debug');
     return $logger;
 }
