@@ -13,7 +13,7 @@ my $LEVELS = {
     warn  => 2,
     info  => 3,
     debug => 4,
-    trace => 5
+    trace => 5,
 };
 
 sub new
@@ -39,7 +39,7 @@ sub set_level
 
     $self->{'level'} = $new_level;
 
-    return;
+    return 1;
 }
 
 sub level
@@ -71,7 +71,7 @@ sub _log
 
     $self->_print($text);
 
-    return;
+    return 1;
 }
 
 sub _print { croak 'Not implemented!' }

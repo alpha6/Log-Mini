@@ -14,9 +14,9 @@ subtest 'creates correct object' => sub {
 
 subtest 'prints to file' => sub {
     
-    for my $level (qw/error warn debug/) {
+    for my $level (qw/error warn info debug trace/) {
         my $file = File::Temp->new;
-        my $log = _build_logger(file => $file->filename);
+        my $log = _build_logger(file => $file->filename, level => $level);
 
         $log->$level('message');
         undef $log;
@@ -31,7 +31,8 @@ subtest 'prints to file synced' => sub {
     my $file = File::Temp->new;
     my $log = _build_logger(file => $file->filename, synced => 1);
 
-    for my $level (qw/error warn debug/) {
+    for my $level (qw/error warn info debug trace /) {
+        $log->set_level($level);
         $log->$level('message');
 
         my $content = _slurp($file);
@@ -41,10 +42,9 @@ subtest 'prints to file synced' => sub {
 };
 
 subtest 'prints to stderr with \n' => sub {
-    for my $level (qw/error warn debug/) {
-    
+    for my $level (qw/error warn info debug trace/) {
         my $file = File::Temp->new;
-        my $log = _build_logger(file => $file->filename);
+        my $log = _build_logger(file => $file->filename, level => $level);
 
         $log->$level('message');
 
@@ -57,9 +57,9 @@ subtest 'prints to stderr with \n' => sub {
 };
 
 subtest 'prints sprintf formatted line' => sub {
-    for my $level (qw/error warn debug/) {
+    for my $level (qw/error warn info debug trace/) {
         my $file = File::Temp->new;
-        my $log = _build_logger(file => $file->filename);
+        my $log = _build_logger(file => $file->filename, level => $level);
 
         $log->$level('message %s', 'formatted');
 
@@ -80,7 +80,7 @@ sub _slurp {
 
 sub _build_logger {
     my $logger = Log::Mini::Logger::FILE->new(@_);
-    $logger->set_level('debug');
+
     return $logger;
 }
 
