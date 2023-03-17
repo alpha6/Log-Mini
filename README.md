@@ -25,7 +25,7 @@ Log::Mini - It's a very simple logger which can log your messages to a file or S
     $logger->log('info', 'information message');
 
     #Null logger - drops all messages to /dev/null
-    my $logger = Log::Mini->new('null');
+    my $logger = Log::Mini->new('null);
     $logger->error('Error message'); #Message will be dropped
 
 # DESCRIPTION
