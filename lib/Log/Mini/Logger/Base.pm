@@ -5,7 +5,7 @@ use warnings;
 
 use Carp       qw(croak);
 use List::Util qw(first);
-use Time::Moment;
+use Time::HiRes;
 
 
 my $LEVELS = {
@@ -78,7 +78,11 @@ sub _print { croak 'Not implemented!' }
 
 sub _getCurrentTime
 {
-    return Time::Moment->now->strftime('%Y-%m-%d %T%3f');
+    my ($seconds, $miliseconds) = Time::HiRes::gettimeofday();
+
+    my ($sec,$min,$hour,$mday,$mon,$year) = localtime($seconds);
+
+    return sprintf('%02i-%02i-%02i %02i:%02i:%02i.%03i', 1900+$year, $mon, $mday, $hour, $min, $sec, substr($miliseconds, 0, 3));
 }
 
 1;

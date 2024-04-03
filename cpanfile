@@ -1,5 +1,4 @@
 requires 'perl', '5.008001';
-requires 'Time::Moment';
 requires 'Carp';
 requires 'List::Util';
 

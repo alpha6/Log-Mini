@@ -2,6 +2,10 @@ Revision history for Perl extension Log-Mini
 
 {{$NEXT}}
 
+0.4.0 2024-04-03T21:47:14Z
+    - STDOUT logger
+    - Time::Moment dependency was removed
+
 0.3.0 2023-03-17T19:35:35Z
     - Adapter namespace changed
 
