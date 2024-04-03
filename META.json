@@ -43,7 +43,6 @@
       "runtime" : {
          "requires" : {
             "Carp" : "0",
-            "List::Util" : "0",
             "perl" : "5.008001"
          }
       },
@@ -57,12 +56,17 @@
    },
    "release_status" : "unstable",
    "resources" : {
+      "bugtracker" : {
+         "web" : "https://github.com/alpha6/Log-Mini/issues"
+      },
+      "homepage" : "https://github.com/alpha6/Log-Mini",
       "repository" : {
          "type" : "git",
-         "url" : "ssh://git@git.whataco.de:2221/medvedych/Log-Mini.git"
+         "url" : "https://github.com/alpha6/Log-Mini.git",
+         "web" : "https://github.com/alpha6/Log-Mini"
       }
    },
-   "version" : "0.4.0",
+   "version" : "0.4.1",
    "x_contributors" : [
       "Denis Fedoseev <denis@fedoseev.work>",
       "medvedych <medvedych@whataco.de>"
