@@ -21,6 +21,8 @@ cover_db/
 *.swp
 *.o
 *.obj
+*.log
+bench.pl
 
 !LICENSE
 
@@ -35,3 +37,5 @@ Log-Mini.ipr
 Log-Mini.iws
 
 .idea/
+.vscode/
+
