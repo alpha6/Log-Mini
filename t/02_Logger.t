@@ -133,18 +133,29 @@ subtest 'log with context' => sub {
 
 subtest 'show correct datetime' => sub {
     my $output = [];
+    my $log    = _build_logger(output => $output);
 
-    my $time = 1738240485; # 2025-01-30 12:34:45 in unixtime
+    my $time          = 1738240485; # 2025-01-30 12:34:45 in unixtime
+    my $december_time = 1733056485; # 2024-12-01 12:34:45 in unixtime
+
     local $ENV{TZ} = 'GTM';
 
     set_fixed_time($time);
 
-    my $log = _build_logger(output => $output);
-
     $log->error('message');
     like $output->[-1], qr/2025-01-30 12:34:45.\d{3} \[error\] message/;
 
+    set_fixed_time($december_time);
+
+    $log->error('message');
+    like $output->[-1], qr/2024-12-01 12:34:45.\d{3} \[error\] message/;
+
     restore_time();
+
+    my $current_date = _getCurrentDate();
+
+    $log->error('message');
+    like $output->[-1], qr/${current_date} \d\d:\d\d:\d\d.\d{3} \[error\] message/;
 };
 
 sub _build_logger
@@ -152,6 +163,12 @@ sub _build_logger
     my $logger = LoggerTest->new(@_);
     $logger->set_level('debug');
     return $logger;
+}
+
+sub _getCurrentDate {
+    my (undef,undef,undef,$mday,$mon,$year) = localtime();
+
+    return sprintf('%i-%02i-%02i', 1900+$year, ++$mon, $mday);
 }
 
 done_testing;
