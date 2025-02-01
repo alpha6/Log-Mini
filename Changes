@@ -1,6 +1,7 @@
 Revision history for Perl extension Log-Mini
 
 {{$NEXT}}
+    - Fixed the error of displaying the log date (https://github.com/alpha6/Log-Mini/issues/2)
 
 0.5.1 2024-09-17T15:43:48Z
     - Updated synopsis

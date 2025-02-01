@@ -5,6 +5,8 @@ use warnings;
 use Test::More;
 use Test::Fatal;
 
+use Test::MockTime::HiRes qw( restore_time set_fixed_time );
+
 
 subtest 'creates correct object' => sub {
     isa_ok(LoggerTest->new, 'LoggerTest');
@@ -127,6 +129,22 @@ subtest 'log with context' => sub {
     
     $log->error('message');
     like $output->[-1], qr/\d\d\d\d-\d\d-\d\d \d\d:\d\d:\d\d.\d{3} \[error\] message/;
+};
+
+subtest 'show correct datetime' => sub {
+    my $output = [];
+
+    my $time = 1738240485; # 2025-01-30 12:34:45 in unixtime
+    local $ENV{TZ} = 'GTM';
+
+    set_fixed_time($time);
+
+    my $log = _build_logger(output => $output);
+
+    $log->error('message');
+    like $output->[-1], qr/2025-01-30 12:34:45.\d{3} \[error\] message/;
+
+    restore_time();
 };
 
 sub _build_logger
